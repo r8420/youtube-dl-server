@@ -3,7 +3,7 @@ const request = require("request");
 
 const isWin = process.platform === "win32";
 
-let url = 'https://yt-dl.org/downloads/latest/youtube-dl' + (isWin ? '.exe' : '')
+let url = 'https://github.com/yt-dlp/yt-dlp/releases/download/2021.10.22/yt-dlp.exe'
 const destFolder = './tools/bin'
 let destFile = destFolder + '/youtube-dl' + (isWin ? '.exe' : '')
 

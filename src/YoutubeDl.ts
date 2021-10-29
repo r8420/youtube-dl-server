@@ -27,6 +27,24 @@ export class YoutubeDl {
             });
         });
     }
+    public static async getVideoUrl(url: string, options?: string, schema?: string[]) {
+        options = '-f mp4';
+        const command = `${bin} ${options} --get-url ${url}`;
+        return await new Promise<any>((resolve, reject) => {
+            exec(command, (error: ExecException | null, stdout: string, stderr: string) => {
+                if(error) {
+                    reject({error: error.message, stderr, stdout});
+                    return
+                }
+                try {
+                    let result = stdout.split('\n',1)[0];
+                    resolve(result);
+                } catch (e) {
+                    reject({error: e, stderr, stdout});
+                }
+            });
+        });
+    }
 
     private static filterKeys(obj: { [name: string]: any }, keys: string[]){
         if(!Array.isArray(keys)) {

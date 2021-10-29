@@ -38,8 +38,10 @@ app.get('/watch', async (req, res) => {
             res.send('Missing video id!');
             return;
         }
-        let metadata = await YoutubeDl.getVideoMetadata(v, options, ['url']);
-        res.redirect(metadata.url);
+        // let metadata = await YoutubeDl.getVideoMetadata(v, options, ['url']);
+        // res.redirect(metadata.url);
+        let videoUrl = await YoutubeDl.getVideoUrl(v, options, ['url']);
+        res.redirect(videoUrl);
     } catch (e) {
         console.error(e)
         res.status(500);

@@ -29,7 +29,7 @@ export class YoutubeDl {
     }
     public static async getVideoUrl(url: string, options?: string, schema?: string[]) {
         options = '-f mp4';
-        const command = `${bin} ${options} --get-url ${url}`;
+        const command = `${bin} ${options} --get-url https://www.youtube.com/watch?v=${url}`;
         return await new Promise<any>((resolve, reject) => {
             exec(command, (error: ExecException | null, stdout: string, stderr: string) => {
                 if(error) {
